@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bakery Sales Dashboard</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-gray-50 text-gray-800 min-h-screen">
+
+  <!-- ── Header ───────────────────────────────────────────── -->
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm">
+    <div class="max-w-screen-xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <!-- Bakery icon -->
+        <span class="text-3xl" aria-hidden="true">🥐</span>
+        <div>
+          <h1 class="text-xl font-bold text-gray-900 leading-tight">Bakery Sales Dashboard</h1>
+          <p class="text-xs text-gray-500">Customer & Order Analytics · 2023–2024</p>
+        </div>
+      </div>
+      <!-- Last updated badge -->
+      <span id="last-updated" class="text-xs text-gray-400 self-end sm:self-auto"></span>
+    </div>
+  </header>
+
+  <main class="max-w-screen-xl mx-auto px-4 py-6 space-y-8">
+
+    <!-- ── Filter Bar ─────────────────────────────────────── -->
+    <section aria-label="Filters" class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4">
+      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Filter Data</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+
+        <div class="flex flex-col gap-1">
+          <label for="filter-year" class="text-xs font-medium text-gray-600">Tahun</label>
+          <select id="filter-year" class="filter-select">
+            <option value="all">Semua Tahun</option>
+            <option value="2023">2023</option>
+            <option value="2024">2024</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="filter-segment" class="text-xs font-medium text-gray-600">Customer Segment</label>
+          <select id="filter-segment" class="filter-select">
+            <option value="all">Semua Segmen</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="filter-gender" class="text-xs font-medium text-gray-600">Gender</label>
+          <select id="filter-gender" class="filter-select">
+            <option value="all">Semua Gender</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <label for="filter-loyalty" class="text-xs font-medium text-gray-600">Loyalty Member</label>
+          <select id="filter-loyalty" class="filter-select">
+            <option value="all">Semua</option>
+            <option value="Yes">Member</option>
+            <option value="No">Non-Member</option>
+          </select>
+        </div>
+
+      </div>
+      <!-- Reset button -->
+      <div class="mt-3 flex justify-end">
+        <button id="btn-reset" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium transition-colors">
+          ↺ Reset Filter
+        </button>
+      </div>
+    </section>
+
+    <!-- ── KPI Cards ──────────────────────────────────────── -->
+    <section aria-label="KPI Cards">
+      <h2 class="section-title">Ringkasan Utama</h2>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4" id="kpi-grid">
+
+        <article class="kpi-card col-span-1">
+          <p class="kpi-label">Total Transaksi (Baris)</p>
+          <p class="kpi-value" id="kpi-rows">—</p>
+          <p class="kpi-sub">data entries</p>
+        </article>
+
+        <article class="kpi-card col-span-1">
+          <p class="kpi-label">Unique Orders</p>
+          <p class="kpi-value" id="kpi-orders">—</p>
+          <p class="kpi-sub">order unik</p>
+        </article>
+
+        <article class="kpi-card col-span-1">
+          <p class="kpi-label">Unique Customers</p>
+          <p class="kpi-value" id="kpi-customers">—</p>
+          <p class="kpi-sub">pelanggan aktif</p>
+        </article>
+
+        <article class="kpi-card col-span-1">
+          <p class="kpi-label">Avg Items/Order</p>
+          <p class="kpi-value" id="kpi-avg-items">—</p>
+          <p class="kpi-sub">item per pesanan</p>
+        </article>
+
+        <article class="kpi-card col-span-2 md:col-span-1">
+          <p class="kpi-label">Loyalty Member</p>
+          <p class="kpi-value" id="kpi-loyalty">—</p>
+          <p class="kpi-sub">dari total entries</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── Chart Grid Row 1 ───────────────────────────────── -->
+    <section aria-label="Trend & Distribusi Utama">
+      <h2 class="section-title">Trend Pesanan & Distribusi</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+        <!-- Monthly Trend (wide) -->
+        <div class="chart-card lg:col-span-2">
+          <h3 class="chart-title">Trend Pesanan Bulanan (Unique Orders)</h3>
+          <div class="chart-wrap-tall">
+            <canvas id="chart-monthly-trend"></canvas>
+          </div>
+        </div>
+
+        <!-- Customer Segment -->
+        <div class="chart-card">
+          <h3 class="chart-title">Distribusi Customer Segment</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-segment"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Chart Grid Row 2 ───────────────────────────────── -->
+    <section aria-label="Demografi">
+      <h2 class="section-title">Demografi Pelanggan</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Gender -->
+        <div class="chart-card">
+          <h3 class="chart-title">Distribusi Gender</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-gender"></canvas>
+          </div>
+        </div>
+
+        <!-- Loyalty -->
+        <div class="chart-card">
+          <h3 class="chart-title">Loyalty Member vs Non-Member</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-loyalty"></canvas>
+          </div>
+        </div>
+
+        <!-- Age Group -->
+        <div class="chart-card sm:col-span-2 lg:col-span-1">
+          <h3 class="chart-title">Distribusi Usia Pelanggan</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-age"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Chart Grid Row 3 ───────────────────────────────── -->
+    <section aria-label="Analisis Order">
+      <h2 class="section-title">Analisis Order</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+        <!-- YoY Comparison -->
+        <div class="chart-card">
+          <h3 class="chart-title">Perbandingan Order Bulanan (2023 vs 2024)</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-yoy"></canvas>
+          </div>
+        </div>
+
+        <!-- Day of Week -->
+        <div class="chart-card">
+          <h3 class="chart-title">Frekuensi Order per Hari (Senin–Minggu)</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-dow"></canvas>
+          </div>
+        </div>
+
+        <!-- Segment × Loyalty Stacked -->
+        <div class="chart-card">
+          <h3 class="chart-title">Loyalty Member per Segmen</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-seg-loyalty"></canvas>
+          </div>
+        </div>
+
+        <!-- Items per Order -->
+        <div class="chart-card">
+          <h3 class="chart-title">Distribusi Jumlah Item per Order</h3>
+          <div class="chart-wrap">
+            <canvas id="chart-items"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Top 10 Customers Table ─────────────────────────── -->
+    <section aria-label="Top Pelanggan">
+      <h2 class="section-title">Top 10 Pelanggan Paling Aktif</h2>
+      <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-x-auto">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-gray-50 border-b border-gray-200">
+            <tr>
+              <th class="px-5 py-3 font-semibold text-gray-600 w-10">#</th>
+              <th class="px-5 py-3 font-semibold text-gray-600">Customer ID</th>
+              <th class="px-5 py-3 font-semibold text-gray-600 text-right">Total Orders</th>
+              <th class="px-5 py-3 font-semibold text-gray-600">Order Share</th>
+            </tr>
+          </thead>
+          <tbody id="top-customers-body" class="divide-y divide-gray-100"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="mt-12 py-6 border-t border-gray-200 text-center text-xs text-gray-400">
+    Data source: <code class="bg-gray-100 px-1 rounded">bakery_sales_dataset-selected-columns.csv</code>
+    &nbsp;·&nbsp; Dashboard dibangun dengan Chart.js &amp; Tailwind CSS
+  </footer>
+
+  <!-- Main script -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+{
+  "kpi": {
+    "total_rows": 19321,
+    "unique_orders": 6576,
+    "unique_customers": 500,
+    "avg_items_per_order": 2.94,
+    "loyalty_member_pct": 42.0,
+    "loyalty_yes": 8116,
+    "loyalty_no": 11205
+  },
+  "monthly_trend": [
+    {
+      "period": "2023-01",
+      "label": "Jan 2023",
+      "orders": 282
+    },
+    {
+      "period": "2023-02",
+      "label": "Feb 2023",
+      "orders": 236
+    },
+    {
+      "period": "2023-03",
+      "label": "Mar 2023",
+      "orders": 265
+    },
+    {
+      "period": "2023-04",
+      "label": "Apr 2023",
+      "orders": 274
+    },
+    {
+      "period": "2023-05",
+      "label": "May 2023",
+      "orders": 250
+    },
+    {
+      "period": "2023-06",
+      "label": "Jun 2023",
+      "orders": 254
+    },
+    {
+      "period": "2023-07",
+      "label": "Jul 2023",
+      "orders": 245
+    },
+    {
+      "period": "2023-08",
+      "label": "Aug 2023",
+      "orders": 279
+    },
+    {
+      "period": "2023-09",
+      "label": "Sep 2023",
+      "orders": 301
+    },
+    {
+      "period": "2023-10",
+      "label": "Oct 2023",
+      "orders": 272
+    },
+    {
+      "period": "2023-11",
+      "label": "Nov 2023",
+      "orders": 276
+    },
+    {
+      "period": "2023-12",
+      "label": "Dec 2023",
+      "orders": 274
+    },
+    {
+      "period": "2024-01",
+      "label": "Jan 2024",
+      "orders": 306
+    },
+    {
+      "period": "2024-02",
+      "label": "Feb 2024",
+      "orders": 240
+    },
+    {
+      "period": "2024-03",
+      "label": "Mar 2024",
+      "orders": 302
+    },
+    {
+      "period": "2024-04",
+      "label": "Apr 2024",
+      "orders": 276
+    },
+    {
+      "period": "2024-05",
+      "label": "May 2024",
+      "orders": 270
+    },
+    {
+      "period": "2024-06",
+      "label": "Jun 2024",
+      "orders": 242
+    },
+    {
+      "period": "2024-07",
+      "label": "Jul 2024",
+      "orders": 289
+    },
+    {
+      "period": "2024-08",
+      "label": "Aug 2024",
+      "orders": 275
+    },
+    {
+      "period": "2024-09",
+      "label": "Sep 2024",
+      "orders": 325
+    },
+    {
+      "period": "2024-10",
+      "label": "Oct 2024",
+      "orders": 303
+    },
+    {
+      "period": "2024-11",
+      "label": "Nov 2024",
+      "orders": 263
+    },
+    {
+      "period": "2024-12",
+      "label": "Dec 2024",
+      "orders": 277
+    }
+  ],
+  "segment_dist": [
+    {
+      "segment": "Young Professional",
+      "orders": 2484
+    },
+    {
+      "segment": "Family",
+      "orders": 1944
+    },
+    {
+      "segment": "Student",
+      "orders": 1705
+    },
+    {
+      "segment": "Senior Citizen",
+      "orders": 443
+    }
+  ],
+  "gender_dist": [
+    {
+      "gender": "Female",
+      "count": 9084
+    },
+    {
+      "gender": "Male",
+      "count": 8896
+    },
+    {
+      "gender": "Other",
+      "count": 1341
+    }
+  ],
+  "loyalty_dist": [
+    {
+      "status": "Member",
+      "count": 8116
+    },
+    {
+      "status": "Non-Member",
+      "count": 11205
+    }
+  ],
+  "age_dist": [
+    {
+      "group": "≤20",
+      "count": 3473
+    },
+    {
+      "group": "21-30",
+      "count": 4068
+    },
+    {
+      "group": "31-40",
+      "count": 4965
+    },
+    {
+      "group": "41-50",
+      "count": 3892
+    },
+    {
+      "group": "51-60",
+      "count": 2033
+    },
+    {
+      "group": "61+",
+      "count": 890
+    }
+  ],
+  "items_dist": [
+    {
+      "items": 1,
+      "orders": 1105
+    },
+    {
+      "items": 2,
+      "orders": 1753
+    },
+    {
+      "items": 3,
+      "orders": 1666
+    },
+    {
+      "items": 4,
+      "orders": 1045
+    },
+    {
+      "items": 5,
+      "orders": 641
+    },
+    {
+      "items": 6,
+      "orders": 235
+    },
+    {
+      "items": 7,
+      "orders": 131
+    }
+  ],
+  "top_customers": [
+    {
+      "customer_id": "CUST0242",
+      "orders": 26
+    },
+    {
+      "customer_id": "CUST0316",
+      "orders": 24
+    },
+    {
+      "customer_id": "CUST0199",
+      "orders": 24
+    },
+    {
+      "customer_id": "CUST0454",
+      "orders": 23
+    },
+    {
+      "customer_id": "CUST0238",
+      "orders": 23
+    },
+    {
+      "customer_id": "CUST0444",
+      "orders": 22
+    },
+    {
+      "customer_id": "CUST0313",
+      "orders": 22
+    },
+    {
+      "customer_id": "CUST0422",
+      "orders": 22
+    },
+    {
+      "customer_id": "CUST0255",
+      "orders": 22
+    },
+    {
+      "customer_id": "CUST0495",
+      "orders": 22
+    }
+  ],
+  "seg_loyalty": [
+    {
+      "segment": "Young Professional",
+      "member": 2729,
+      "non_member": 4516
+    },
+    {
+      "segment": "Family",
+      "member": 2725,
+      "non_member": 3142
+    },
+    {
+      "segment": "Student",
+      "member": 2163,
+      "non_member": 2769
+    },
+    {
+      "segment": "Senior Citizen",
+      "member": 499,
+      "non_member": 778
+    }
+  ],
+  "yoy_data": {
+    "2023": [
+      282,
+      236,
+      265,
+      274,
+      250,
+      254,
+      245,
+      279,
+      301,
+      272,
+      276,
+      274
+    ],
+    "2024": [
+      306,
+      240,
+      302,
+      276,
+      270,
+      242,
+      289,
+      275,
+      325,
+      303,
+      263,
+      277
+    ]
+  },
+  "dow_data": [
+    {
+      "day": "Mon",
+      "orders": 868
+    },
+    {
+      "day": "Tue",
+      "orders": 850
+    },
+    {
+      "day": "Wed",
+      "orders": 839
+    },
+    {
+      "day": "Thu",
+      "orders": 831
+    },
+    {
+      "day": "Fri",
+      "orders": 860
+    },
+    {
+      "day": "Sat",
+      "orders": 1157
+    },
+    {
+      "day": "Sun",
+      "orders": 1171
+    }
+  ],
+  "gender_segment": {
+    "genders": [
+      "Female",
+      "Male",
+      "Other"
+    ],
+    "segments": [
+      "Young Professional",
+      "Family",
+      "Student",
+      "Senior Citizen"
+    ],
+    "data": [
+      [
+        3052,
+        2957,
+        2319,
+        756
+      ],
+      [
+        3810,
+        2490,
+        2111,
+        485
+      ],
+      [
+        383,
+        420,
+        502,
+        36
+      ]
+    ]
+  },
+  "month_names": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ]
+}

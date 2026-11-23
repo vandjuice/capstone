@@ -1,0 +1,237 @@
+/* ============================================================
+   style.css  –  Bakery Sales Dashboard
+   Tambahan styling di luar Tailwind CSS utility classes.
+   Semua warna utama mengacu pada palet yang konsisten:
+     Indigo  : #6366f1 (primary)
+     Violet  : #8b5cf6 (secondary)
+     Emerald : #10b981 (positive)
+     Amber   : #f59e0b (warning)
+     Rose    : #f43f5e (danger)
+   ============================================================ */
+
+/* ── Root Variables ──────────────────────────────────────── */
+:root {
+  --color-primary   : #6366f1;
+  --color-secondary : #8b5cf6;
+  --color-emerald   : #10b981;
+  --color-amber     : #f59e0b;
+  --color-rose      : #f43f5e;
+  --color-cyan      : #06b6d4;
+  --radius-card     : 1rem;      /* 16px */
+  --shadow-card     : 0 2px 10px rgba(0,0,0,.06), 0 0 1px rgba(0,0,0,.06);
+  --transition-fast : 150ms ease;
+}
+
+/* ── Body & Base ─────────────────────────────────────────── */
+body {
+  font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Section Title ───────────────────────────────────────── */
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+/* ── KPI Card ────────────────────────────────────────────── */
+.kpi-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.25rem 1rem;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  /* Left accent bar */
+  border-left: 4px solid var(--color-primary);
+}
+
+.kpi-card:nth-child(2) { border-left-color: var(--color-secondary); }
+.kpi-card:nth-child(3) { border-left-color: var(--color-emerald);   }
+.kpi-card:nth-child(4) { border-left-color: var(--color-amber);     }
+.kpi-card:nth-child(5) { border-left-color: var(--color-cyan);      }
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.09), 0 0 1px rgba(0,0,0,.06);
+}
+
+.kpi-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin-bottom: 0.4rem;
+}
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #111827;
+  margin-bottom: 0.25rem;
+  /* smooth value change */
+  transition: color 200ms ease;
+}
+
+.kpi-sub {
+  font-size: 0.72rem;
+  color: #9ca3af;
+}
+
+/* ── Chart Card ──────────────────────────────────────────── */
+.chart-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-card);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-fast);
+}
+
+.chart-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,.09), 0 0 1px rgba(0,0,0,.06);
+}
+
+.chart-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* Fixed-height wrappers for charts */
+.chart-wrap {
+  position: relative;
+  height: 260px;
+}
+
+.chart-wrap-tall {
+  position: relative;
+  height: 280px;
+}
+
+/* ── Filter Select ───────────────────────────────────────── */
+.filter-select {
+  width: 100%;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.6rem;
+  font-size: 0.82rem;
+  color: #374151;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.6rem center;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99,102,241,.15);
+}
+
+.filter-select:hover {
+  border-color: #9ca3af;
+}
+
+/* ── Top Customers Table ─────────────────────────────────── */
+#top-customers-body tr {
+  transition: background-color var(--transition-fast);
+}
+
+#top-customers-body tr:hover {
+  background-color: #f9fafb;
+}
+
+#top-customers-body td {
+  padding: 0.65rem 1.25rem;
+  color: #374151;
+}
+
+/* Bar indicator for order share */
+.share-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.share-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  transition: width 400ms ease;
+  min-width: 2px;
+}
+
+.share-label {
+  font-size: 0.72rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+/* ── Rank Badge ──────────────────────────────────────────── */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.rank-gold   { background: #fef3c7; color: #d97706; }
+.rank-silver { background: #f3f4f6; color: #6b7280; }
+.rank-bronze { background: #fef2f2; color: #ef4444; }
+.rank-normal { background: #f3f4f6; color: #9ca3af; }
+
+/* ── Loading Overlay ─────────────────────────────────────── */
+#loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 50;
+  transition: opacity 300ms ease;
+}
+
+#loading-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid #e5e7eb;
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Responsive chart height overrides ───────────────────── */
+@media (max-width: 640px) {
+  .chart-wrap      { height: 220px; }
+  .chart-wrap-tall { height: 220px; }
+  .kpi-value       { font-size: 1.6rem; }
+}
